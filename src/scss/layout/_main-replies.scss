@@ -1,0 +1,10 @@
+.main-replies {
+  display: flex;
+  position: relative;
+  hr {
+    position: absolute;
+    height: 90%;
+    left: 5%;
+    border: 2px solid var(--neutral-3);
+  }
+}

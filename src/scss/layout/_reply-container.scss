@@ -1,0 +1,128 @@
+.reply-container {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  width: 50vw;
+  margin-bottom: 1rem;
+
+  .create-reply-container {
+    width: 90%;
+    margin-bottom: 0;
+  }
+  hr {
+    margin: 0 2.5rem;
+    border: 2px solid var(--neutral-3);
+  }
+  .sub-container {
+    background-color: var(--neutral-3);
+    width: 90%;
+    border: none;
+    border-radius: 1rem;
+    display: flex;
+    padding: 1.5rem;
+    gap: 1.5rem;
+    margin-bottom: 0.5rem;
+
+    .left {
+      background-color: var(--neutral-4);
+      border-radius: 0.7rem;
+      border: none;
+      color: var(--primary-1);
+      width: fit-content;
+      height: fit-content;
+      padding: 0.5rem;
+
+      p {
+        font-weight: 700;
+        margin: 10px 0;
+      }
+      button {
+        background-color: transparent;
+        border: none;
+        color: var(--neutral-2);
+        font-weight: 700;
+      }
+      button:hover {
+        cursor: pointer;
+      }
+    }
+
+    .right {
+      width: 100%;
+
+      .head {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+
+        .container-1,
+        .container-2,
+        .delete-container {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .img-container {
+            width: 15%;
+
+            img {
+              width: 100%;
+            }
+          }
+
+          .you {
+            background-color: var(--primary-1);
+            border-radius: 0.2rem;
+            padding: 0.1rem 0.3rem;
+            p {
+              color: var(--neutral-5);
+              margin: 0;
+            }
+          }
+
+          .username {
+            color: var(--neutral-1);
+            font-weight: 500;
+          }
+
+          .createdAt {
+            color: var(--neutral-2);
+          }
+        }
+
+        .delete-container {
+          p {
+            color: var(--primary-2);
+            font-weight: 700;
+          }
+        }
+
+        .delete-container:hover {
+          cursor: pointer;
+          opacity: 0.7;
+        }
+
+        .container-2 {
+          gap: 0.5rem;
+          color: var(--primary-1);
+          font-weight: 500;
+        }
+
+        .container-2:hover {
+          cursor: pointer;
+          opacity: 0.7;
+        }
+      }
+
+      .context {
+        p {
+          color: var(--neutral-2);
+        }
+      }
+    }
+  }
+}
+
+.reply-container:last-of-type {
+  margin-bottom: 0;
+}
