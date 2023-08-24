@@ -2,10 +2,17 @@ import { useState } from "react";
 import data from "../data.json";
 import CreateReply from "./CreateReply";
 import Reply from "./Reply";
+import Delete from "./Delete";
 function Comments() {
   const [visible, setVisible] = useState(null);
   const { comments } = data;
+  const [count, setCount] = useState(null);
+  const [onDelete, setOnDelete] = useState(false);
 
+  const increase = (val) => {
+    setCount((prev) => (prev = val + 1));
+    console.log(count);
+  };
   const onCreateReply = (val) => {
     if (visible === val) {
       setVisible(null);
@@ -14,15 +21,21 @@ function Comments() {
     }
   };
 
+  const deleteContainer = () => {
+    setOnDelete((prev) => !prev);
+    console.log(onDelete);
+  };
+
   return (
     <div>
+      {onDelete && <Delete deleteContainer={deleteContainer} />}
       {comments.map((comment) => {
         return (
           <div className="main" key={comment.id}>
             <div className="comment-container">
               <div className="left">
-                <button>+</button>
-                <p>12</p>
+                <button onClick={() => increase(comment.score)}>+</button>
+                <p>{comment.score}</p>
                 <button>-</button>
               </div>
 
@@ -53,7 +66,10 @@ function Comments() {
             {comment.replies.length > 0 && (
               <div className="main-replies">
                 <hr />
-                <Reply replies={comment.replies} />
+                <Reply
+                  replies={comment.replies}
+                  deleteContainer={deleteContainer}
+                />
               </div>
             )}
           </div>

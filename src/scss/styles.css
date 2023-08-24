@@ -11,6 +11,7 @@ html {
 }
 
 body {
+  position: relative;
   background-color: var(--neutral-4);
   display: flex;
   align-items: center;
@@ -232,6 +233,24 @@ body {
 .reply-container .sub-container .right .context p {
   color: var(--neutral-2);
 }
+.reply-container .sub-container .right .context textarea {
+  cursor: pointer;
+  resize: none;
+  width: 100%;
+  height: 15vh;
+  border: 2px solid var(--neutral-4);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+.reply-container .sub-container .right .context button {
+  margin: 0 auto;
+  background-color: var(--primary-1);
+  border: none;
+  border-radius: 0.5rem;
+  color: var(--neutral-5);
+  padding: 0.7rem 1.5rem;
+  font-weight: 700;
+}
 
 .reply-container:last-of-type {
   margin-bottom: 0;
@@ -328,4 +347,50 @@ body {
 .create-reply-container form button:hover {
   cursor: pointer;
   opacity: 0.7;
+}
+
+.delete_container {
+  background-color: rgba(0, 0, 0, 0.45);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+.delete_container .container {
+  background-color: var(--neutral-5);
+  border-radius: 0.5rem;
+  position: sticky;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1.5rem;
+  width: 330px;
+}
+.delete_container .container h2 {
+  color: var(--neutral-1);
+  margin-top: 0;
+}
+.delete_container .container p {
+  color: var(--neutral-2);
+  font-size: 0.9rem;
+  line-height: 150%;
+}
+.delete_container .container .btn_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.delete_container .container .btn_container .cancel,
+.delete_container .container .btn_container .delete {
+  background-color: var(--neutral-2);
+  border: none;
+  border-radius: 0.3rem;
+  color: var(--neutral-5);
+  padding: 0.7rem 1.5rem;
+  font-weight: 700;
+}
+.delete_container .container .btn_container .delete {
+  background-color: var(--primary-2);
 }/*# sourceMappingURL=styles.css.map */

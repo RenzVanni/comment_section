@@ -1,8 +1,15 @@
 import { useState } from "react";
 import CreateReply from "./CreateReply";
 
-function Reply({ replies }) {
+export const confirmDelete = (val) => {
+  console.log(val);
+  return val;
+};
+
+function Reply({ replies, deleteContainer }) {
   const [visible, setVisible] = useState(null);
+  const [edit, setEdit] = useState(null);
+  const [deleteReply, setDeleteReply] = useState(false);
 
   const onCreateReply = (val) => {
     if (visible === val) {
@@ -10,6 +17,18 @@ function Reply({ replies }) {
     } else {
       setVisible(val);
     }
+  };
+
+  const onEditReply = (val) => {
+    if (edit === val) {
+      setEdit(null);
+    } else {
+      setEdit(val);
+    }
+  };
+
+  const confirmDeleteReply = () => {
+    setDeleteReply(!deleteReply);
   };
   return (
     <div>
@@ -19,7 +38,7 @@ function Reply({ replies }) {
             <div className="sub-container">
               <div className="left">
                 <button>+</button>
-                <p>12</p>
+                <p>{reply.score}</p>
                 <button>-</button>
               </div>
 
@@ -41,14 +60,14 @@ function Reply({ replies }) {
                         src="../public/images/icon-delete.svg"
                         alt="delete-svg"
                       />
-                      <p>Delete</p>
+                      <p onClick={deleteContainer}>Delete</p>
                     </div>
                     <div className="container-2">
                       <img
-                        src="../public/images/icon-reply.svg"
+                        src="../public/images/icon-edit.svg"
                         alt="reply-svg"
                       />
-                      <p onClick={() => onCreateReply(reply.id)}>Reply</p>
+                      <p onClick={() => onEditReply(reply.id)}>Edit</p>
                     </div>
                   </div>
                 ) : (
@@ -72,6 +91,18 @@ function Reply({ replies }) {
 
                 <div className="context">
                   <p>{reply.content}</p>
+                  {reply.user.username === "juliusomo"
+                    ? edit && (
+                        <>
+                          <textarea
+                            name=""
+                            id=""
+                            value={reply.content}
+                          ></textarea>
+                          <button>Update</button>
+                        </>
+                      )
+                    : null}
                 </div>
               </div>
             </div>
