@@ -6,10 +6,16 @@
     border: none;
     border-radius: 1rem;
     display: flex;
-    width: 50vw;
+    flex-direction: column-reverse;
+    width: clamp(350px, 50vw, 60vw);
     padding: 1.5rem;
     gap: 1.5rem;
-    margin-bottom: 0.5rem;
+    margin: 0 auto;
+    position: relative;
+    @media (min-width: 375px) {
+      flex-direction: row;
+      margin-bottom: 0.5rem;
+    }
 
     .left {
       background-color: var(--neutral-4);
@@ -18,11 +24,23 @@
       color: var(--primary-1);
       width: fit-content;
       height: fit-content;
+      display: flex;
       padding: 0.5rem;
+      gap: 1rem;
+
+      @media (min-width: 375px) {
+        display: block;
+        gap: 0;
+      }
 
       p {
         font-weight: 700;
-        margin: 10px 0;
+        margin: 0;
+        text-align: center;
+
+        @media (min-width: 375px) {
+          margin: 10px 0;
+        }
       }
       button {
         background-color: transparent;
@@ -50,7 +68,7 @@
           justify-content: space-between;
 
           .img-container {
-            width: 15%;
+            width: clamp(30px, 1rem, 2rem);
 
             img {
               width: 100%;
@@ -67,10 +85,21 @@
           }
         }
 
+        .container-1 {
+          gap: 1rem;
+        }
+
         .container-2 {
+          position: absolute;
+          top: 77%;
+          left: 75%;
           gap: 0.5rem;
           color: var(--primary-1);
           font-weight: 500;
+
+          @media (min-width: 375px) {
+            position: static;
+          }
         }
 
         .container-2:hover {

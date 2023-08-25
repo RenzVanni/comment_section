@@ -5,7 +5,9 @@ import Reply from "./Reply";
 import Delete from "./Delete";
 function Comments() {
   const [visible, setVisible] = useState(null);
-  const { comments } = data;
+  // const { comments } = data;
+
+  const [comments, setComments] = useState(data.comments);
   const [count, setCount] = useState(null);
   const [onDelete, setOnDelete] = useState(false);
 
@@ -23,12 +25,18 @@ function Comments() {
 
   const deleteContainer = () => {
     setOnDelete((prev) => !prev);
-    console.log(onDelete);
+  };
+
+  const exeDelete = (id) => {
+    const look = comments.filter((user) => user.id === id);
+    setComments(look);
   };
 
   return (
     <div>
-      {onDelete && <Delete deleteContainer={deleteContainer} />}
+      {onDelete && (
+        <Delete deleteContainer={deleteContainer} exeDelete={exeDelete} />
+      )}
       {comments.map((comment) => {
         return (
           <div className="main" key={comment.id}>

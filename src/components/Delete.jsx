@@ -1,6 +1,16 @@
 import { useState } from "react";
 
-function Delete({ deleteContainer }) {
+export const num = (val) => {
+  const [value, setValue] = useState(null);
+
+  setValue(val);
+  return value;
+};
+
+function Delete({ deleteContainer, exeDelete }) {
+  console.log(deleteContainer);
+  const { num } = deleteContainer;
+  console.log(num);
   return (
     <div className="delete_container">
       <div className="container">
@@ -13,7 +23,14 @@ function Delete({ deleteContainer }) {
           <button onClick={deleteContainer} className="cancel">
             NO, CANCEL
           </button>
-          <button className="delete">YES, DELETE</button>
+          <button
+            onClick={() => {
+              exeDelete(num);
+            }}
+            className="delete"
+          >
+            YES, DELETE
+          </button>
         </div>
       </div>
     </div>

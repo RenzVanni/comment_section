@@ -1,5 +1,6 @@
 import { useState } from "react";
 import CreateReply from "./CreateReply";
+import { num } from "./Delete";
 
 export const confirmDelete = (val) => {
   console.log(val);
@@ -30,6 +31,7 @@ function Reply({ replies, deleteContainer }) {
   const confirmDeleteReply = () => {
     setDeleteReply(!deleteReply);
   };
+
   return (
     <div>
       {replies.map((reply) => {
@@ -60,7 +62,14 @@ function Reply({ replies, deleteContainer }) {
                         src="../public/images/icon-delete.svg"
                         alt="delete-svg"
                       />
-                      <p onClick={deleteContainer}>Delete</p>
+                      <p
+                        onClick={() => {
+                          deleteContainer();
+                          num(reply.id);
+                        }}
+                      >
+                        Delete
+                      </p>
                     </div>
                     <div className="container-2">
                       <img
