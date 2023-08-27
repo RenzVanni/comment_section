@@ -39,6 +39,38 @@ function Reply({ replies, deleteContainer, onReplyValue, replyVal, delRep }) {
     console.log(repple, "rep");
   }, [delRep]);
 
+  const addScore = (id) => {
+    setRepple((comment) => {
+      return comment.map((comment) => {
+        if (comment.id === id) {
+          return {
+            ...comment,
+            score: comment.score + 1,
+          };
+        }
+        return comment;
+      });
+    });
+  };
+
+  const minusScore = (id) => {
+    setRepple((comment) => {
+      return comment.map((comment) => {
+        if (comment.id === id) {
+          let newScore = comment.score - 1;
+          if (newScore <= 0) {
+            newScore = 0;
+          }
+          return {
+            ...comment,
+            score: newScore,
+          };
+        }
+        return comment;
+      });
+    });
+  };
+
   return (
     <div>
       {repple.map((reply) => {
@@ -46,9 +78,9 @@ function Reply({ replies, deleteContainer, onReplyValue, replyVal, delRep }) {
           <div key={reply.id} className="reply-container">
             <div className="sub-container">
               <div className="left">
-                <button>+</button>
+                <button onClick={() => addScore(reply.id)}>+</button>
                 <p>{reply.score}</p>
-                <button>-</button>
+                <button onClick={() => minusScore(reply.id)}>-</button>
               </div>
 
               <div className="right">

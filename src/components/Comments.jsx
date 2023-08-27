@@ -39,7 +39,38 @@ function Comments() {
   const deleteConfirmed = () => {
     setOnDelete((prev) => !prev);
     setDelRep((prev) => (prev = replyVal));
-    console.log(delRep, "repDeee");
+  };
+
+  const addScore = (id) => {
+    setComments((comment) => {
+      return comment.map((comment) => {
+        if (comment.id === id) {
+          return {
+            ...comment,
+            score: comment.score + 1,
+          };
+        }
+        return comment;
+      });
+    });
+  };
+
+  const minusScore = (id) => {
+    setComments((comment) => {
+      return comment.map((comment) => {
+        if (comment.id === id) {
+          let newScore = comment.score - 1;
+          if (newScore <= 0) {
+            newScore = 0;
+          }
+          return {
+            ...comment,
+            score: newScore,
+          };
+        }
+        return comment;
+      });
+    });
   };
 
   return (
@@ -56,9 +87,9 @@ function Comments() {
           <div className="main" key={comment.id}>
             <div className="comment-container">
               <div className="left">
-                <button onClick={() => increase(comment.score)}>+</button>
+                <button onClick={() => addScore(comment.id)}>+</button>
                 <p>{comment.score}</p>
-                <button>-</button>
+                <button onClick={() => minusScore(comment.id)}>-</button>
               </div>
 
               <div className="right">
