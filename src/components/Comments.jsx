@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import data from "../data.json";
 import CreateReply from "./CreateReply";
 import Reply from "./Reply";
@@ -11,10 +11,13 @@ function Comments() {
   const [count, setCount] = useState(null);
   const [onDelete, setOnDelete] = useState(false);
 
+  const [replyVal, setReplyVal] = useState(null);
+  const [delRep, setDelRep] = useState(0);
+
   const increase = (val) => {
     setCount((prev) => (prev = val + 1));
-    console.log(count);
   };
+
   const onCreateReply = (val) => {
     if (visible === val) {
       setVisible(null);
@@ -23,19 +26,30 @@ function Comments() {
     }
   };
 
+  const onReplyValue = (val) => {
+    setReplyVal((prev) => (prev = val));
+    console.log(val, "val");
+    console.log(replyVal);
+  };
+
   const deleteContainer = () => {
     setOnDelete((prev) => !prev);
   };
 
-  const exeDelete = (id) => {
-    const look = comments.filter((user) => user.id === id);
-    setComments(look);
+  const deleteConfirmed = () => {
+    setOnDelete((prev) => !prev);
+    setDelRep((prev) => (prev = replyVal));
+    console.log(delRep, "repDeee");
   };
 
   return (
     <div>
       {onDelete && (
-        <Delete deleteContainer={deleteContainer} exeDelete={exeDelete} />
+        <Delete
+          deleteContainer={deleteContainer}
+          replyVal={replyVal}
+          deleteConfirmed={deleteConfirmed}
+        />
       )}
       {comments.map((comment) => {
         return (
@@ -77,6 +91,9 @@ function Comments() {
                 <Reply
                   replies={comment.replies}
                   deleteContainer={deleteContainer}
+                  onReplyValue={onReplyValue}
+                  replyVal={replyVal}
+                  delRep={delRep}
                 />
               </div>
             )}

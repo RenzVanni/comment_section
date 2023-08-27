@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CreateReply from "./CreateReply";
-import { num } from "./Delete";
 
 export const confirmDelete = (val) => {
   console.log(val);
   return val;
 };
 
-function Reply({ replies, deleteContainer }) {
+function Reply({ replies, deleteContainer, onReplyValue, replyVal, delRep }) {
+  const [repple, setRepple] = useState(replies);
   const [visible, setVisible] = useState(null);
   const [edit, setEdit] = useState(null);
   const [deleteReply, setDeleteReply] = useState(false);
@@ -32,9 +32,16 @@ function Reply({ replies, deleteContainer }) {
     setDeleteReply(!deleteReply);
   };
 
+  useEffect(() => {
+    setRepple((prev) => {
+      return prev.filter((reply) => reply.id !== delRep);
+    });
+    console.log(repple, "rep");
+  }, [delRep]);
+
   return (
     <div>
-      {replies.map((reply) => {
+      {repple.map((reply) => {
         return (
           <div key={reply.id} className="reply-container">
             <div className="sub-container">
@@ -65,7 +72,7 @@ function Reply({ replies, deleteContainer }) {
                       <p
                         onClick={() => {
                           deleteContainer();
-                          num(reply.id);
+                          onReplyValue(reply.id);
                         }}
                       >
                         Delete

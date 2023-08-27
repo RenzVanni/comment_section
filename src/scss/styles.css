@@ -305,6 +305,11 @@ body {
   cursor: pointer;
   opacity: 0.7;
 }
+.reply-container .sub-container .right .context {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
 .reply-container .sub-container .right .context p {
   color: var(--neutral-2);
 }
@@ -316,9 +321,9 @@ body {
   border: 2px solid var(--neutral-4);
   border-radius: 0.5rem;
   padding: 1rem;
+  margin-bottom: 1rem;
 }
 .reply-container .sub-container .right .context button {
-  margin: 0 auto;
   background-color: var(--primary-1);
   border: none;
   border-radius: 0.5rem;
