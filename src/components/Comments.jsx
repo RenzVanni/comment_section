@@ -102,10 +102,7 @@ function Comments() {
                     <p className="createdAt">{comment.createdAt}</p>
                   </div>
                   <div className="container-2">
-                    <img
-                      src="../public/images/icon-reply.svg"
-                      alt="reply-svg"
-                    />
+                    <img src="/images/icon-reply.svg" alt="reply-svg" />
                     <p onClick={() => onCreateReply(comment.id)}>Reply</p>
                   </div>
                 </div>

@@ -97,10 +97,7 @@ function Reply({ replies, deleteContainer, onReplyValue, replyVal, delRep }) {
                       <p className="createdAt">{reply.createdAt}</p>
                     </div>
                     <div className="delete-container">
-                      <img
-                        src="../public/images/icon-delete.svg"
-                        alt="delete-svg"
-                      />
+                      <img src="/images/icon-delete.svg" alt="delete-svg" />
                       <p
                         onClick={() => {
                           deleteContainer();
@@ -111,10 +108,7 @@ function Reply({ replies, deleteContainer, onReplyValue, replyVal, delRep }) {
                       </p>
                     </div>
                     <div className="container-2">
-                      <img
-                        src="../public/images/icon-edit.svg"
-                        alt="reply-svg"
-                      />
+                      <img src="/images/icon-edit.svg" alt="reply-svg" />
                       <p onClick={() => onEditReply(reply.id)}>Edit</p>
                     </div>
                   </div>
@@ -128,10 +122,7 @@ function Reply({ replies, deleteContainer, onReplyValue, replyVal, delRep }) {
                       <p className="createdAt">{reply.createdAt}</p>
                     </div>
                     <div className="container-2">
-                      <img
-                        src="../public/images/icon-reply.svg"
-                        alt="reply-svg"
-                      />
+                      <img src="/images/icon-reply.svg" alt="reply-svg" />
                       <p onClick={() => onCreateReply(reply.id)}>Reply</p>
                     </div>
                   </div>
